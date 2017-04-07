@@ -92,6 +92,6 @@ class ConfigGenerator
 
     private function generateFilename()
     {
-        $fileName = 'amazon-config.'.sha1(serialize($this->config)).'.php';
+        return 'amazon-config.'.sha1(serialize($this->config)).'.php';
     }
 }
