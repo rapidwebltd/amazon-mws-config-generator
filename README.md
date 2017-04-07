@@ -1,4 +1,4 @@
-# amazon-mws-config-generator
+# Amazon MWS Config Generator
 Generate configuration files for PHP Amazon MWS library - https://github.com/CPIGroup/phpAmazonMWS
 
 ## Example usage
