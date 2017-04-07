@@ -5,7 +5,7 @@ $store['[[storeName]]']['merchantId'] = '[[merchantId]]';         // Merchant ID
 $store['[[storeName]]']['marketplaceId'] = '[[marketplaceId]]';   // Marketplace ID for this store
 $store['[[storeName]]']['keyId'] = '[[keyId]]';                   // Access Key ID
 $store['[[storeName]]']['secretKey'] = '[[secretKey]]';           // Secret Access Key for this store
-$store['[[storeName]]']['serviceUrl'] = '[[serviceUrl]]';         // Optional override for Service URL
+$store['[[storeName]]']['serviceUrl'] = '';                       // Optional override for Service URL (not required)
 $store['[[storeName]]']['MWSAuthToken'] = '[[MWSAuthToken]]';     // Token needed for web apps and third-party developers
 
 // Service URL Base (default: 'https://mws.amazonservices.com/')
