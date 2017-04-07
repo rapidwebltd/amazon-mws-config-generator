@@ -12,7 +12,8 @@ class ConfigGenerator
         'secretKey' => '',
         'MWSAuthToken' => '',
         'AMAZON_SERVICE_URL' => 'https://mws.amazonservices.com/',
-        'logpath' => '\'.__DIR__.\'/log.txt\'',
+        'logpath' => '\'.__DIR__.\'/log.txt',
+        'logfunction' => '',
         'muteLog' => 'false',
     ];
 
@@ -56,6 +57,11 @@ class ConfigGenerator
         $this->config['logpath'] = $logPath;
     }
 
+    public function setLogFunction($logFunction)
+    {
+        $this->config['logfunction'] = $logFunction;
+    }
+
     public function setMuteLog($muteLog)
     {
         $this->config['muteLog'] = $muteLog ? 'true' : 'false';
@@ -84,7 +90,7 @@ class ConfigGenerator
     private function populateTemplate($template)
     {
         foreach($this->config as $key => $value) {
-            str_replace('[['.$key.']]', $value, $template);
+            $template = str_replace('[['.$key.']]', $value, $template);
         }
 
         return $template;
