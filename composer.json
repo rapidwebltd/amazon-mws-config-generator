@@ -2,7 +2,7 @@
     "name": "rapidwebltd/amazon-mws-config-generator",
     "description": "Generate configuration files for PHP Amazon MWS library - https://github.com/CPIGroup/phpAmazonMWS",
     "type": "library",
-    "license": "LGPL3",
+    "license": "LGPL-3.0-only",
     "authors": [
         {
             "name": "Jordan Hall",
