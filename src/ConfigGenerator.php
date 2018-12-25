@@ -15,7 +15,7 @@ class ConfigGenerator
         'logpath' => '\'.__DIR__.\'/log.txt',
         'logfunction' => '',
         'muteLog' => 'false',
-        'configFilePath' => __DIR__.'/../configs/'
+        'configpath' => __DIR__.'/../configs/'
     ];
 
     public function setStoreName($storeName)
@@ -68,11 +68,15 @@ class ConfigGenerator
         $this->config['muteLog'] = $muteLog ? 'true' : 'false';
     }
 
+    public function setConfigPath($configPath) {
+        $this->config['configPath'] = $configPath;
+    }
+
     public function save()
     {
         $fileContents = $this->populateTemplate($this->getTemplate());
 
-        $filePath = $this->config['configFilePath'] . $this->generateFilename();
+        $filePath = $this->config['configpath'] . $this->generateFilename();
 
         $result = file_put_contents($filePath, $fileContents);
 
@@ -85,10 +89,10 @@ class ConfigGenerator
 
     public function delete()
     {
-        if (unlink($this->config['configFilePath'] . $this->generateFilename())) {
+        if (unlink($this->config['configpath'] . $this->generateFilename())) {
             throw new Exception('Error deleting file: '. $this->file);
         }
-        
+
         return;
     }
 
