@@ -69,7 +69,7 @@ class ConfigGenerator
     }
 
     public function setConfigPath($configPath) {
-        $this->config['configPath'] = $configPath;
+        $this->config['configpath'] = $configPath;
     }
 
     public function save()
