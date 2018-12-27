@@ -17,6 +17,7 @@ $amazonConfig->setMWSAuthToken('ABC');
 $amazonConfig->setAmazonServiceURL('https://mws.amazonservices.com/');
 $amazonConfig->setLogPath('/tmp/amazon-log.txt');
 $amazonConfig->setMuteLog(false);
+$amazonConfig->setConfigPath('/tmp/config/config-file.php');
 
 // Save out Amazon config to a file
 $configPath = $amazonConfig->save();
@@ -25,9 +26,11 @@ $configPath = $amazonConfig->save();
 $amz=new AmazonFeed(null, false, null, $configPath);
 
 // Use as normal...
-$amz->setFeedType("_POST_INVENTORY_AVAILABILITY_DATA_"); 
+$amz->setFeedType("_POST_INVENTORY_AVAILABILITY_DATA_");
 $amz->setFeedContent($feed);
 $amz->submitFeed();
 return $amz->getResponse();
 
+// Delete previously generated amazon config (for temporary use)
+$amazonConfig->delete();
 ```
