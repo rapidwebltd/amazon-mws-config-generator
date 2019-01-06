@@ -15,8 +15,16 @@ class ConfigGenerator
         'logpath' => '\'.__DIR__.\'/log.txt',
         'logfunction' => '',
         'muteLog' => 'false',
-        'configpath' => null
+        'configpath' => __DIR__.'/../configs/',
     ];
+
+    private $filename;
+
+
+    public function __construct()
+    {
+        $this->generateFilename();
+    }
 
     public function setStoreName($storeName)
     {
@@ -72,11 +80,15 @@ class ConfigGenerator
         $this->config['configpath'] = $configPath;
     }
 
+    public function setFilename($filename) {
+        $this->filename = $filename;
+    }
+
     public function save()
     {
         $fileContents = $this->populateTemplate($this->getTemplate());
 
-        $filePath = ($this->config['configpath']) ? $this->config['configpath'] : __DIR__.'/../configs/' . $this->generateFilename();
+        $filePath = $this->config['configpath'] . $this->filename;
 
         $result = file_put_contents($filePath, $fileContents);
 
@@ -89,12 +101,7 @@ class ConfigGenerator
 
     public function delete()
     {
-        $file = ($this->config['configpath']) ? $this->config['configpath'] : __DIR__.'/../configs/' . $this->generateFilename();
-        if (unlink($file)) {
-            throw new \Exception('Error deleting file: '. $file);
-        }
-
-        return;
+        $file = $this->config['configpath'] . $this->filename;
     }
 
     private function getTemplate()
@@ -113,6 +120,6 @@ class ConfigGenerator
 
     private function generateFilename()
     {
-        return 'amazon-config.'.sha1(serialize($this->config)).'.php';
+        $this->filename = 'amazon-config.'.sha1(serialize($this->config)).'.php';
     }
 }
