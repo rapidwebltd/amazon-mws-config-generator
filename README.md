@@ -17,7 +17,7 @@ $amazonConfig->setMWSAuthToken('ABC');
 $amazonConfig->setAmazonServiceURL('https://mws.amazonservices.com/');
 $amazonConfig->setLogPath('/tmp/amazon-log.txt');
 $amazonConfig->setMuteLog(false);
-$amazonConfig->setConfigPath('/tmp/config/config-file.php');
+$amazonConfig->setConfigPath('/tmp/config/');
 
 // Save out Amazon config to a file
 $configPath = $amazonConfig->save();
