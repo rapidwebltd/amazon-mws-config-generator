@@ -102,6 +102,7 @@ class ConfigGenerator
     public function delete()
     {
         $file = $this->config['configpath'] . $this->filename;
+        return unlink($file);
     }
 
     private function getTemplate()
